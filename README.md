@@ -68,8 +68,10 @@ And also if you want to test my CI/CD implementation just make change and push t
 
 
 ### Visit swagger UI
+![img_6.png](img_6.png)
 
 - http://localhost:3000/swagger-ui/ (Dev)
+- http://20.53.132.118//swagger-ui/ (Prod)
 
 ### CI/CD
 
