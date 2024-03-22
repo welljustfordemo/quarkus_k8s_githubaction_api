@@ -18,7 +18,8 @@
   about Quarkus, please visit its website: https://quarkus.io/ .
 - Two docker images will be build : **latest** and **github commit hash tag (eg. 8ff8bed)**
 
-![img.png](img.png)
+![img_5.png](img_5.png)
+https://hub.docker.com/repository/docker/andrewprogramming/demo-api/general
 
 ## How to start
 
@@ -57,7 +58,8 @@ docker-compose -f docker-compose-dev.yaml up
   automatically [Pipeline Link](https://github.com/welljustfordemo/quarkus_k8s_githubaction_demo/actions)
 - Visit services by using Azure LoadBalancer IP (4.147.249.188), for
   example : http://20.53.132.118/v1/history
-
+![img_2.png](img_2.png)
+- ![img_3.png](img_3.png)
 In case you want to deply it in K8s you can run below command:
 ```yaml
 kubectl apply -f target/kubernetes/kubernetes.yml -n demo 
@@ -76,10 +78,20 @@ And also if you want to test my CI/CD implementation just make change and push t
   Kubernetes manifests but for this case due to the limitation of time and the great advantage of
   Quarkus , Kubernetes manifests is choosed
 
-
+![img_1.png](img_1.png)
 ## Next Step
 
 - Implement GitOps best practise with ArgoCD / FluxCD
+- Implement Monitoring and Logging with Prometheus and Grafana
+- Implement Security with OPA and Gatekeeper / Azure Sentinel, Defender
+- Implement Service Mesh with Istio
+- Implement CI/CD with Jenkins / GitLab CI / CircleCI
+- Implement Log Management with ELK / Splunk
+- Integrate with Slack / Microsoft Teams for notification
+- Integrate with JIRA / Trello for project management
+- Integrate with SonarQube for code quality
+- Integrate with Artifactory / Nexus for artifact management
+- Integrate with Sentry
 
 ## Note ##
 
