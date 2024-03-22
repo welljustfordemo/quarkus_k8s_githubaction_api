@@ -54,9 +54,9 @@ docker-compose -f docker-compose-dev.yaml up
 - CI/CD is implemented using GithubAction and pipeline script is
   here: [ci.yml](.github%2Fworkflows%2Fci.yml)
 - All you need to do is submit your code and merge it to `main` branch , pipeline will trigger
-  automatically [Pipeline Link](https://github.com/kobe73er/demo_interview/actions)
+  automatically [Pipeline Link](https://github.com/welljustfordemo/quarkus_k8s_githubaction_demo/actions)
 - Visit services by using Azure LoadBalancer IP (4.147.249.188), for
-  example : http://4.147.249.188/v1/history
+  example : http://20.53.132.118/v1/history
 
 In case you want to deply it in K8s you can run below command:
 ```yaml
@@ -100,7 +100,7 @@ And also if you want to test my CI/CD implementation just make change and push t
 ```yaml
 kubectl create secret generic demo-db-credentials \
   --from-literal=username='demoadmin' \
-  --from-literal=password='Deng_pf1234' \
+  --from-literal=password='gasdfa@#$gadg' \
   -n demo
 ```
 
