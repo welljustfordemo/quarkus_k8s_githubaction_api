@@ -73,6 +73,9 @@ And also if you want to test my CI/CD implementation just make change and push t
 - http://localhost:3000/swagger-ui/ (Dev)
 - http://20.53.132.118//swagger-ui/ (Prod)
 
+### Tools ###
+http://localhost:3000/q/dev-ui/continuous-testing
+
 ### CI/CD
 
 - By leverage the power of Quarkus framework , CI/CD can be easily implemented with GithubAction ;
