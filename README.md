@@ -161,5 +161,7 @@ kubectl create secret generic demo-db-credentials \
 kubectl create namespace demo
 ```
 
+## Issues
+- My mac is ARM so docker image cannot be used on Linux
 
 
