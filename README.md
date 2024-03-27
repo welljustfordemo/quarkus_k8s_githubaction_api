@@ -101,6 +101,24 @@ kubectl port-forward svc/loki-grafana 3000:80 -n loki-stack
 ```
 ![img_8.png](img_8.png)
 
+### Configure Ingress
+```yaml
+kubectl get pods --all-namespaces | grep ingress
+
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+helm install ingress-nginx ingress-nginx/ingress-nginx --create-namespace --namespace ingress-nginx
+
+### Check Ingress pod status
+kubectl get pods -n ingress-nginx
+### check if Service assigned with external IP
+kubectl get svc -n ingress-nginx
+
+### Debug Ingress
+kubectl logs -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx
+
+
+```
 ## Next Step
 
 - Implement GitOps best practise with ArgoCD / FluxCD
