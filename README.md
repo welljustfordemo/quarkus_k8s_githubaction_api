@@ -82,12 +82,28 @@ http://localhost:3000/q/dev-ui/continuous-testing
 - Most of the cases HELM with FluxCD or ArgoCD maybe a better option for GitOps implementation then
   Kubernetes manifests but for this case due to the limitation of time and the great advantage of
   Quarkus , Kubernetes manifests is choosed
+  ![img_1.png](img_1.png)
+### Monitoring
+Use loki-stack for monitoring
+```yaml
+## install loki-stack
+helm search repo loki
+helm show values grafana/loki-stack>k8s/values.yaml
+helm install --values values.yaml loki grafana/loki-stack -n loki-stack --create-namespace
 
-![img_1.png](img_1.png)
+## get grafana admin user password
+kubectl get secret -n loki-stack loki-grafana \
+-o jsonpath="{.data.admin-password}" | \
+base64 --decode ; echo
+
+## port forwarding of grafana
+kubectl port-forward svc/loki-grafana 3000:80 -n loki-stack
+```
+![img_8.png](img_8.png)
+
 ## Next Step
 
 - Implement GitOps best practise with ArgoCD / FluxCD
-- Implement Monitoring and Logging with Prometheus and Grafana
 - Implement Security with OPA and Gatekeeper / Azure Sentinel, Defender
 - Implement Service Mesh with Istio
 - Implement CI/CD with Jenkins / GitLab CI / CircleCI
@@ -126,3 +142,6 @@ kubectl create secret generic demo-db-credentials \
 ```yaml
 kubectl create namespace demo
 ```
+
+
+
