@@ -165,3 +165,12 @@ kubectl create namespace demo
 - My mac is ARM so docker image cannot be used on Linux
 
 
+## Install Ingress Controller
+https://kubernetes.github.io/ingress-nginx/deploy/
+kubectl port-forward --namespace=ingress-nginx service/ingress-nginx-controller 8081:80
+
+curl --resolve demo.localdev.me:8081:127.0.0.1 http://demo.localdev.me:8081
+
+
+## Mis
+Quarkus configurations: https://quarkus.io/guides/all-config
