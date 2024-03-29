@@ -36,6 +36,15 @@ jobs:
           echo $DOCKER_HUB_ACCESS_TOKEN | docker login -u $DOCKER_HUB_USERNAME --password-stdin
           ./mvnw package -Dquarkus.profile=prod -Dquarkus.container-image.build=true
 
+      - name: Analyze with SonarQube
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: |
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+            -Dsonar.projectKey=welljustfordemo_quarkus_k8s_githubaction_api_47d2d8e1-117c-40f0-baba-27c64cc07ab4 \
+            -Dsonar.projectName='quarkus_k8s_githubaction_api'
+
       - name: Deploy to Kubernetes
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
