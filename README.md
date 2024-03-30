@@ -142,7 +142,10 @@ kubectl logs -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx
 
 ### Build production image and push to dockerhub locally
 
+make sure docker login locally
+
 ```
+docker login
 ./mvnw package -Dquarkus.profile=prod
 ```
 
