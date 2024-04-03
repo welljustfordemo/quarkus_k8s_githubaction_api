@@ -142,11 +142,12 @@ kubectl logs -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx
 
 ### Build production image and push to dockerhub locally
 
-make sure docker login locally
+if you want to build locally ,make sure docker login locally and follow below procedure
 
 ```
 docker login
 ./mvnw package -Dquarkus.profile=prod
+kubectl apply -f target/kubernetes/kubernetes.yml -n demo  
 ```
 
 ### Database credential stored in K8s
