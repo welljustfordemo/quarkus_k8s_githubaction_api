@@ -1,0 +1,491 @@
+COMPUTED VALUES:
+OpenShift:
+  createSCC: true
+  enabled: false
+affinity: {}
+annotations: {}
+caCerts:
+  enabled: false
+  image: adoptopenjdk/openjdk11:alpine
+  secret: your-secret
+containerSecurityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+    - ALL
+  runAsGroup: 0
+  runAsNonRoot: true
+  runAsUser: 1000
+  seccompProfile:
+    type: RuntimeDefault
+deploymentStrategy: {}
+deploymentType: StatefulSet
+edition: community
+elasticsearch:
+  bootstrapChecks: true
+  configureNode: false
+emptyDir: {}
+extraConfig:
+  configmaps: []
+  secrets: []
+extraContainers: []
+extraInitContainers: {}
+hostAliases: []
+image:
+  pullPolicy: IfNotPresent
+  repository: sonarqube
+  tag: 10.4.1-{{ .Values.edition }}
+ingress:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-body-size: "64m"
+  enabled: true
+  paths:
+    - /
+  hosts:
+    - name: sonarqube.ad.com
+  tls: []
+initContainers:
+  resources: {}
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+      - ALL
+    runAsGroup: 0
+    runAsNonRoot: true
+    runAsUser: 1000
+    seccompProfile:
+      type: RuntimeDefault
+initFs:
+  enabled: true
+  securityContext:
+    capabilities:
+      add:
+      - CHOWN
+      drop:
+      - ALL
+    privileged: false
+    runAsGroup: 0
+    runAsNonRoot: false
+    runAsUser: 0
+    seccompProfile:
+      type: RuntimeDefault
+initSysctl:
+  enabled: true
+  fsFileMax: 131072
+  nofile: 131072
+  nproc: 8192
+  securityContext:
+    privileged: true
+    runAsUser: 0
+  vmMaxMapCount: 524288
+jdbcOverwrite:
+  enable: false
+  jdbcPassword: sonarPass
+  jdbcUrl: jdbc:postgresql://myPostgress/myDatabase?socketTimeout=1500
+  jdbcUsername: sonarUser
+jvmCeOpts: ""
+jvmOpts: ""
+livenessProbe:
+  failureThreshold: 6
+  initialDelaySeconds: 60
+  periodSeconds: 30
+  timeoutSeconds: 1
+monitoringPasscode: define_it
+networkPolicy:
+  enabled: false
+  prometheusNamespace: monitoring
+nginx:
+  enabled: false
+nodeSelector: {}
+persistence:
+  accessMode: ReadWriteOnce
+  annotations: {}
+  enabled: false
+  guid: 0
+  mounts: []
+  size: 5Gi
+  storageClass: null
+  uid: 1000
+  volumes: []
+plugins:
+  install: []
+  noCheckCertificate: false
+podLabels: {}
+postgresql:
+  audit:
+    clientMinMessages: error
+    logConnections: false
+    logDisconnections: false
+    logHostname: false
+    logLinePrefix: ""
+    logTimezone: ""
+    pgAuditLog: ""
+    pgAuditLogCatalog: "off"
+  common:
+    exampleValue: common-chart
+    global:
+      imagePullSecrets: []
+      imageRegistry: ""
+      postgresql:
+        existingSecret: ""
+        postgresqlDatabase: ""
+        postgresqlPassword: ""
+        postgresqlUsername: ""
+        replicationPassword: ""
+        servicePort: ""
+      storageClass: ""
+  commonAnnotations: {}
+  commonLabels: {}
+  configurationConfigMap: ""
+  containerPorts:
+    postgresql: 5432
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+      - ALL
+    enabled: true
+    runAsNonRoot: true
+    runAsUser: 1001
+    seccompProfile:
+      type: RuntimeDefault
+  customLivenessProbe: {}
+  customReadinessProbe: {}
+  customStartupProbe: {}
+  diagnosticMode:
+    args:
+    - infinity
+    command:
+    - sleep
+    enabled: false
+  enabled: true
+  existingSecret: ""
+  extendedConfConfigMap: ""
+  extraDeploy: []
+  extraEnv: []
+  extraEnvVarsCM: ""
+  fullnameOverride: ""
+  global:
+    imagePullSecrets: []
+    imageRegistry: ""
+    postgresql:
+      existingSecret: ""
+      postgresqlDatabase: ""
+      postgresqlPassword: ""
+      postgresqlUsername: ""
+      replicationPassword: ""
+      servicePort: ""
+    storageClass: ""
+  image:
+    debug: false
+    pullPolicy: IfNotPresent
+    pullSecrets: []
+    registry: docker.io
+    repository: bitnami/postgresql
+    tag: 11.14.0-debian-10-r22
+  initdbPassword: ""
+  initdbScripts: {}
+  initdbScriptsConfigMap: ""
+  initdbScriptsSecret: ""
+  initdbUser: ""
+  ldap:
+    baseDN: ""
+    bind_password: ""
+    bindDN: ""
+    enabled: false
+    port: ""
+    prefix: ""
+    scheme: ""
+    search_attr: ""
+    search_filter: ""
+    server: ""
+    suffix: ""
+    tls: ""
+    url: ""
+  lifecycleHooks: {}
+  livenessProbe:
+    enabled: true
+    failureThreshold: 6
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 5
+  metrics:
+    customMetrics: {}
+    enabled: false
+    extraEnvVars: []
+    image:
+      pullPolicy: IfNotPresent
+      pullSecrets: []
+      registry: docker.io
+      repository: bitnami/postgres-exporter
+      tag: 0.10.0-debian-10-r167
+    livenessProbe:
+      enabled: true
+      failureThreshold: 6
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 5
+    prometheusRule:
+      additionalLabels: {}
+      enabled: false
+      namespace: ""
+      rules: []
+    readinessProbe:
+      enabled: true
+      failureThreshold: 6
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 5
+    resources: {}
+    securityContext:
+      enabled: false
+      runAsUser: 1001
+    service:
+      annotations:
+        prometheus.io/port: "9187"
+        prometheus.io/scrape: "true"
+      loadBalancerIP: ""
+      type: ClusterIP
+    serviceMonitor:
+      additionalLabels: {}
+      enabled: false
+      interval: ""
+      metricRelabelings: []
+      namespace: ""
+      relabelings: []
+      scrapeTimeout: ""
+  nameOverride: ""
+  networkPolicy:
+    allowExternal: true
+    enabled: false
+    explicitNamespacesSelector: {}
+  persistence:
+    accessMode: ReadWriteOnce
+    accessModes:
+    - ReadWriteOnce
+    annotations: {}
+    enabled: true
+    existingClaim: ""
+    mountPath: /bitnami/postgresql
+    selector: {}
+    size: 20Gi
+    storageClass: ""
+    subPath: ""
+  pgHbaConfiguration: ""
+  postgresqlConfiguration: {}
+  postgresqlDataDir: /bitnami/postgresql/data
+  postgresqlDatabase: sonarDB
+  postgresqlDbUserConnectionLimit: ""
+  postgresqlExtendedConf: {}
+  postgresqlInitdbArgs: ""
+  postgresqlInitdbWalDir: ""
+  postgresqlMaxConnections: ""
+  postgresqlPassword: sonarPass
+  postgresqlPghbaRemoveFilters: ""
+  postgresqlPostgresConnectionLimit: ""
+  postgresqlPostgresPassword: ""
+  postgresqlSharedPreloadLibraries: pgaudit
+  postgresqlStatementTimeout: ""
+  postgresqlTcpKeepalivesCount: ""
+  postgresqlTcpKeepalivesIdle: ""
+  postgresqlTcpKeepalivesInterval: ""
+  postgresqlUsername: sonarUser
+  primary:
+    affinity: {}
+    annotations: {}
+    extraInitContainers: []
+    extraPodSpec: {}
+    extraVolumeMounts: []
+    extraVolumes: []
+    labels: {}
+    nodeAffinityPreset:
+      key: ""
+      type: ""
+      values: []
+    nodeSelector: {}
+    podAffinityPreset: ""
+    podAnnotations: {}
+    podAntiAffinityPreset: soft
+    podLabels: {}
+    priorityClassName: ""
+    service:
+      clusterIP: ""
+      nodePort: ""
+      type: ""
+    sidecars: []
+    tolerations: []
+  primaryAsStandBy:
+    enabled: false
+    primaryHost: ""
+    primaryPort: ""
+  psp:
+    create: false
+  rbac:
+    create: false
+  readReplicas:
+    affinity: {}
+    annotations: {}
+    extraInitContainers: []
+    extraPodSpec: {}
+    extraVolumeMounts: []
+    extraVolumes: []
+    labels: {}
+    nodeAffinityPreset:
+      key: ""
+      type: ""
+      values: []
+    nodeSelector: {}
+    persistence:
+      enabled: true
+    podAffinityPreset: ""
+    podAnnotations: {}
+    podAntiAffinityPreset: soft
+    podLabels: {}
+    priorityClassName: ""
+    resources: {}
+    service:
+      clusterIP: ""
+      nodePort: ""
+      type: ""
+    sidecars: []
+    tolerations: []
+    topologySpreadConstraints: []
+  readinessProbe:
+    enabled: true
+    failureThreshold: 6
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 5
+  replication:
+    applicationName: my_application
+    enabled: false
+    numSynchronousReplicas: 0
+    password: repl_password
+    readReplicas: 1
+    singleService: true
+    synchronousCommit: "off"
+    uniqueServices: false
+    user: repl_user
+  resources:
+    limits:
+      cpu: 2
+      memory: 2Gi
+    requests:
+      cpu: 100m
+      memory: 200Mi
+  schedulerName: ""
+  securityContext:
+    enabled: true
+    fsGroup: 1001
+  service:
+    annotations: {}
+    clusterIP: ""
+    externalTrafficPolicy: Cluster
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    nodePort: ""
+    port: 5432
+    type: ClusterIP
+  serviceAccount:
+    autoMount: false
+    enabled: false
+    name: ""
+  shmVolume:
+    chmod:
+      enabled: false
+    enabled: true
+    sizeLimit: ""
+  startupProbe:
+    enabled: false
+    failureThreshold: 10
+    initialDelaySeconds: 30
+    periodSeconds: 15
+    successThreshold: 1
+    timeoutSeconds: 5
+  terminationGracePeriodSeconds: ""
+  tls:
+    autoGenerated: false
+    certCAFilename: ""
+    certFilename: ""
+    certKeyFilename: ""
+    certificatesSecret: ""
+    crlFilename: ""
+    enabled: false
+    preferServerCiphers: true
+  updateStrategy:
+    type: RollingUpdate
+  usePasswordFile: false
+  volumePermissions:
+    enabled: false
+    image:
+      pullPolicy: IfNotPresent
+      pullSecrets: []
+      registry: docker.io
+      repository: bitnami/bitnami-shell
+      tag: 10-debian-10-r299
+    securityContext:
+      runAsUser: 0
+prometheusExporter:
+  ceBeanPort: 8001
+  config:
+    rules:
+    - pattern: .*
+  enabled: false
+  noCheckCertificate: false
+  version: 0.17.2
+  webBeanPort: 8000
+prometheusMonitoring:
+  podMonitor:
+    enabled: false
+    interval: 30s
+    namespace: default
+readinessProbe:
+  failureThreshold: 6
+  initialDelaySeconds: 60
+  periodSeconds: 30
+  timeoutSeconds: 1
+replicaCount: 1
+resources:
+  limits:
+    cpu: 800m
+    memory: 4Gi
+  requests:
+    cpu: 400m
+    memory: 2Gi
+revisionHistoryLimit: 10
+route:
+  annotations: {}
+  enabled: false
+  host: ""
+  tls:
+    termination: edge
+securityContext:
+  fsGroup: 0
+service:
+  annotations: {}
+  externalPort: 9000
+  internalPort: 9000
+  labels: null
+  type: LoadBalancer
+serviceAccount:
+  annotations: {}
+  create: false
+sonarWebContext: ""
+sonarqubeFolder: /opt/sonarqube
+startupProbe:
+  failureThreshold: 24
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 1
+terminationGracePeriodSeconds: 60
+tests:
+  enabled: true
+  image: ""
+  resources: {}
+tolerations: []

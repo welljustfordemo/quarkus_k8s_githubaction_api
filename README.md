@@ -178,3 +178,18 @@ curl --resolve demo.localdev.me:8081:127.0.0.1 http://demo.localdev.me:8081
 
 ## Mis
 Quarkus configurations: https://quarkus.io/guides/all-config
+
+## How to expert values.yaml for a release , eg. sonarqube
+```yaml
+helm get values sonarqube -n sonarqube --all> sonarqube-values.yaml
+### upgrade sonarqube
+helm upgrade sonarqube sonarqube/sonarqube -n sonarqube -f helm/charts/sonarqube-values.yaml
+```
+
+## Installed Charts
+| Release Name | Namespace  | Chart | Version     | App Version | Status   |
+|--------------|------------|-------|-------------|-------------|----------|
+| sonarqube    | sonarqube  | sonarqube | 10.4.1+2389 | 10.4.1      | Deployed |
+| loki         | loki-stack | loki-stack| 2.10.2      | 2.9.3       | Deployed |
+| prometheus-operator | default    | kube-prometheus-stack | 57.1.1      | 0.72.0      | Deployed |
+| ingress-nginx | ingress-nginx | ingress-nginx | 4.10.0      | 1.10.0      | Deployed |
