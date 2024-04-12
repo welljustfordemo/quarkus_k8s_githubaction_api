@@ -186,6 +186,16 @@ helm get values sonarqube -n sonarqube --all> sonarqube-values.yaml
 helm upgrade sonarqube sonarqube/sonarqube -n sonarqube -f helm/charts/sonarqube-values.yaml
 ```
 
+## Istio
+
+**Installation guide:** https://istio.io/latest/docs/setup/getting-started/
+
+**PS:** Use different namespace called `istio-demo` instead of `default` which used in the office guid
+so just add -n after the command, for instance `kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml -n istio-demo`
+
+```yaml
+![img_7.png](img_7.png)
+
 ## Installed Charts
 | Release Name | Namespace  | Chart | Version     | App Version | Status   |
 |--------------|------------|-------|-------------|-------------|----------|
