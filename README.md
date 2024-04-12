@@ -193,6 +193,7 @@ helm upgrade sonarqube sonarqube/sonarqube -n sonarqube -f helm/charts/sonarqube
 **PS:** Use different namespace called `istio-demo` instead of `default` which used in the office guid
 so just add -n after the command, for instance `kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml -n istio-demo`
 
+Demo application address : http://4.147.234.43/productpage
 ```yaml
 ![img_7.png](img_7.png)
 
