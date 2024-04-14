@@ -119,18 +119,7 @@ kubectl logs -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx
 
 
 ```
-## Next Step
 
-- Implement GitOps best practise with ArgoCD / FluxCD
-- Implement Security with OPA and Gatekeeper / Azure Sentinel, Defender
-- Implement Service Mesh with Istio
-- Implement CI/CD with Jenkins / GitLab CI / CircleCI
-- Implement Log Management with ELK / Splunk
-- Integrate with Slack / Microsoft Teams for notification
-- Integrate with JIRA / Trello for project management
-- Integrate with SonarQube for code quality
-- Integrate with Artifactory / Nexus for artifact management
-- Integrate with Sentry
 
 ## Note ##
 
@@ -195,8 +184,6 @@ helm upgrade sonarqube sonarqube/sonarqube -n sonarqube -f helm/charts/sonarqube
 so just add -n after the command, for instance `kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml -n istio-demo`
 
 Demo application address : http://4.147.234.43/productpage
-```yaml
-
 
 ## Installed Charts
 | Release Name | Namespace  | Chart | Version     | App Version | Status   |
@@ -205,3 +192,15 @@ Demo application address : http://4.147.234.43/productpage
 | loki         | loki-stack | loki-stack| 2.10.2      | 2.9.3       | Deployed |
 | prometheus-operator | default    | kube-prometheus-stack | 57.1.1      | 0.72.0      | Deployed |
 | ingress-nginx | ingress-nginx | ingress-nginx | 4.10.0      | 1.10.0      | Deployed |
+
+## Next Step
+
+- Implement GitOps best practise with ArgoCD / FluxCD
+- Implement Security with OPA and Gatekeeper / Azure Sentinel, Defender
+- Implement CI/CD with Jenkins / GitLab CI / CircleCI
+- Implement Log Management with ELK / Splunk
+- Integrate with Slack / Microsoft Teams for notification
+- Integrate with JIRA / Trello for project management
+- Integrate with SonarQube for code quality
+- Integrate with Artifactory / Nexus for artifact management
+- Integrate with Sentry
