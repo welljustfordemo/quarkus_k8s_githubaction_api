@@ -187,6 +187,7 @@ helm upgrade sonarqube sonarqube/sonarqube -n sonarqube -f helm/charts/sonarqube
 ```
 
 ## Istio
+![img_7.png](img_7.png)
 
 **Installation guide:** https://istio.io/latest/docs/setup/getting-started/
 
@@ -195,7 +196,7 @@ so just add -n after the command, for instance `kubectl apply -f samples/bookinf
 
 Demo application address : http://4.147.234.43/productpage
 ```yaml
-![img_7.png](img_7.png)
+
 
 ## Installed Charts
 | Release Name | Namespace  | Chart | Version     | App Version | Status   |
