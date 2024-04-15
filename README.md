@@ -1,5 +1,3 @@
-# demo interview api
-
 ## How it works ?
 
 ### Tech stack
